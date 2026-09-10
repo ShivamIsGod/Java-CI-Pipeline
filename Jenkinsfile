@@ -1,7 +1,19 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+        JAVA_HOME = "/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"
+    }
+
     stages {
+
+        stage('Check Environment') {
+            steps {
+                sh 'java -version'
+                sh 'mvn -version'
+            }
+        }
 
         stage('Build') {
             steps {
