@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/ShivamIsGod/Java-CI-Pipeline.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
@@ -30,11 +24,11 @@ pipeline {
 
     post {
         success {
-            echo '🎉 Java project built successfully!'
+            echo 'Java project built successfully!'
         }
 
         failure {
-            echo '❌ Build failed. Check the console output.'
+            echo 'Build failed. Check the console output.'
         }
     }
 }
